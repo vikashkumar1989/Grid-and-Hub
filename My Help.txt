@@ -1,0 +1,28 @@
+Using Default Config:
+Start the hub:
+java -jar selenium-server-standalone-3.141.59.jar -role hub
+
+Check through IP Address if Hub is running:
+http://localhost:4444/grid/console
+or
+http://10.0.0.3:4444/grid/console
+
+Start the node-1(Ip Address of the machine where hub is running)
+Java -Dwebdriver.chrome.driver="chromedriver.exe" -Dwebdriver.ie.driver="IEDriverServer.exe" -Dwebdriver.gecko.driver="geckodriver.exe" -jar selenium-server-standalone-3.141.59.jar -role webdriver -hub http://10.0.0.3:4444/grid/register -port 5566
+
+Start the node-2(Ip Address of the machine where hub is running)
+Java -Dwebdriver.chrome.driver="chromedriver.exe" -Dwebdriver.ie.driver="IEDriverServer.exe" -Dwebdriver.gecko.driver="geckodriver.exe" -jar selenium-server-standalone-3.141.59.jar -role webdriver -hub http://10.0.0.3:4444/grid/register -port 5566
+
+_____________________________________________________
+
+
+Using JSON:
+Start Hub:
+java -jar selenium-server-standalone-3.141.59.jar -role hub -hubConfig DefaultConfigHub.json
+
+Start node-1:
+Java -Dwebdriver.chrome.driver="chromedriver.exe" -Dwebdriver.ie.driver="IEDriverServer.exe" -Dwebdriver.gecko.driver="geckodriver.exe" -jar selenium-server-standalone-3.141.59.jar -role node -nodeConfig node1.json
+
+Start node-2:
+Java -Dwebdriver.chrome.driver="chromedriver.exe" -Dwebdriver.ie.driver="IEDriverServer.exe" -Dwebdriver.gecko.driver="geckodriver.exe" -jar selenium-server-standalone-3.141.59.jar -role node -nodeConfig node2.json
+
